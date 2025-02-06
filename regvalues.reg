@@ -1,0 +1,8 @@
+UpdateDefault=0; 
+Install{8A69D345-D564-463C-AFF1-A69D9E530F96}=4;
+Update{8A69D345-D564-463C-AFF1-A69D9E530F96}=1;
+InstallDefault=0; 
+AutoUpdateCheckPeriodMinutes=1440;
+Install{8237E44A-0054-442C-B6B6-EA0509993955}=4;
+Update{8237E44A-0054-442C-B6B6-EA0509993955}=1;
+DisableAutoUpdateChecksCheckboxValue=0;
