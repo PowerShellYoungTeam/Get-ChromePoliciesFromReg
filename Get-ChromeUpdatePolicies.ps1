@@ -80,11 +80,16 @@ function Get-ChromeUpdatePoliciesController {
         if (Test-FQDNOnline -FQDN $fqdn) {
             try {
                 $policies = Get-ChromeUpdatePolicies -FQDNs @($fqdn)
-                $results += [PSCustomObject]@{
-                    FQDN     = $fqdn
-                    Status   = "Online"
-                    Policies = $policies
+                $policyProperties = @{}
+                foreach ($property in $policies.PSObject.Properties) {
+                    if ($property.Value -ne $null) {
+                        $policyProperties[$property.Name] = $property.Value
+                    }
                 }
+                $results += [PSCustomObject]@{
+                    FQDN   = $fqdn
+                    Status = "Online"
+                } + $policyProperties
             }
             catch {
                 $results += [PSCustomObject]@{
