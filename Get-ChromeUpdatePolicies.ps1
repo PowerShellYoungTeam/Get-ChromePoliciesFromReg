@@ -80,7 +80,16 @@ function Get-ChromeUpdatePoliciesController {
         if (Test-FQDNOnline -FQDN $fqdn) {
             try {
                 $policies = Get-ChromeUpdatePolicies -FQDNs @($fqdn)
-                $policyProperties = @{}
+                $policyProperties = @{
+                    UpdateDefault                                = $null
+                    Install_8A69D345_D564_463C_AFF1_A69D9E530F96 = $null
+                    Update_8A69D345_D564_463C_AFF1_A69D9E530F96  = $null
+                    InstallDefault                               = $null
+                    AutoUpdateCheckPeriodMinutes                 = $null
+                    Install_8237E44A_0054_442C_B6B6_EA0509993955 = $null
+                    Update_8237E44A_0054_442C_B6B6_EA0509993955  = $null
+                    DisableAutoUpdateChecksCheckboxValue         = $null
+                }
                 foreach ($property in $policies.PSObject.Properties) {
                     if ($property.Value -ne $null) {
                         $policyProperties[$property.Name] = $property.Value
